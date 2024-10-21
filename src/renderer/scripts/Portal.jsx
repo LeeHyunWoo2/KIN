@@ -60,8 +60,12 @@ const Portal = () => {
                   style={{marginRight: '10px'}}>
             Go to Authentication3
           </Button>
-          <Button onClick={() => goToPage('Authentication4')}>
+          <Button onClick={() => goToPage('Authentication4')}
+                  style={{marginRight: '10px'}}>
             Go to Authentication4
+          </Button>
+          <Button onClick={() => goToPage('Authentication5')}>
+            Go to Authentication5
           </Button>
         </div>
         <div style={{'marginTop': '20px'}}>
@@ -80,7 +84,35 @@ const Portal = () => {
         <div style={{'marginTop': '20px'}}>
           <Button onClick={() => goToPage('TasksPage')}
                   style={{marginRight: '10px'}}>
-              Go to tasksPage
+            Go to tasksPage
+          </Button>
+          <Button onClick={() => goToPage('CardPage')}
+                  style={{marginRight: '10px'}}>
+            Go to CardPage
+          </Button>
+          <Button onClick={() => goToPage('DashPage')}
+                  style={{marginRight: '10px'}}>
+            Go to DashPage
+          </Button>
+          <Button onClick={() => goToPage('MusicPage')}>
+            Go to MusicPage
+          </Button>
+        </div>
+        <div style={{'marginTop': '20px'}}>
+          <Button onClick={() => goToPage('AllComponentsPage')}
+                  style={{marginRight: '10px'}}>
+            Go to AllComponentsPage
+          </Button>
+          <Button onClick={() => goToPage('SidebarPage1')}
+                  style={{marginRight: '10px'}}>
+            Go to SidebarPage1
+          </Button>
+          <Button onClick={() => goToPage('SidebarPage2')}
+                  style={{marginRight: '10px'}}>
+            Go to SidebarPage2
+          </Button>
+          <Button onClick={() => goToPage('SidebarPage3')}>
+            Go to SidebarPage3
           </Button>
         </div>
 

@@ -1,10 +1,4 @@
-export interface Album {
-  name: string
-  artist: string
-  cover: string
-}
-
-export const listenNowAlbums: Album[] = [
+export const listenNowAlbums = [
   {
     name: "React Rendezvous",
     artist: "Ethan Byte",
@@ -31,7 +25,7 @@ export const listenNowAlbums: Album[] = [
   },
 ]
 
-export const madeForYouAlbums: Album[] = [
+export const madeForYouAlbums = [
   {
     name: "Thinking Components",
     artist: "Lena Logic",

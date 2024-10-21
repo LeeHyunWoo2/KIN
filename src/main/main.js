@@ -1,13 +1,16 @@
-require('electron-reload')(__dirname);
+require('electron-reload')(require('path').join(__dirname, '../../'), { // 자동새로고침 패키지 사용
+  ignored: /node_modules|\.git|dist/, // 감시에서 제외할 폴더나 파일 패턴을 정규식으로 지정
+  awaitWriteFinish: {
+    stabilityThreshold: 1000, // 변경 완료 후 1초 뒤 재시작
+    pollInterval: 1000 // 파일 상태 체크 간격 1초
+  },
+  electron: require(`${__dirname}/../../node_modules/electron`)
+});
 
 // 일렉트론 초기화 및 창 생성 코드
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require("path");
 const { getTasks } = require('./handler');
-
-require('electron-reload')(__dirname, { // 자동새로고침 패키지 사용
-  ignored: /node_modules|\.git|dist/  // 감시에서 제외할 폴더나 파일 패턴을 정규식으로 지정
-});
 
 // 윈도우 생성 함수
 function createWindow() {

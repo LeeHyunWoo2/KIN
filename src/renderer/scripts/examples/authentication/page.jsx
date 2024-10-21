@@ -1,12 +1,10 @@
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { Image, Link } from '/src/renderer/scripts/CommonElements';
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAuthForm } from "./components/user-auth-form";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Authentication",
   description: "Authentication forms built using the components.",
 };

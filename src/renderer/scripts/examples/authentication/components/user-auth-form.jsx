@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -8,12 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+export function UserAuthForm({ className, ...props }) {
+  const [isLoading, setIsLoading] = React.useState(false);
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-  async function onSubmit(event: React.SyntheticEvent) {
+  async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
 

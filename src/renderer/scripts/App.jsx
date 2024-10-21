@@ -15,10 +15,18 @@ const Authentication1 = lazy(() => import('./pages/Authentication01'));
 const Authentication2 = lazy(() => import('./pages/Authentication02'));
 const Authentication3= lazy(() => import('./pages/Authentication03'));
 const Authentication4 = lazy(() => import('./pages/Authentication04'));
+const Authentication5 = lazy(() => import('./examples/authentication/page'));
 const MailPage = lazy(() => import('./examples/mail/components/mail'));
 const BoardPage = lazy(() => import('./examples/playground/page'));
 const FormPage = lazy(() => import('./examples/forms/layout'));
 const TasksPage = lazy(() => import('./examples/tasks/page'));
+const CardPage = lazy(() => import('./examples/cards/page'));
+const DashPage = lazy(() => import('./examples/dashboard/page'));
+const MusicPage = lazy(() => import('./examples/music/page'));
+const AllComponentsPage = lazy(() => import('./pages/AllComponents'));
+const SidebarPage1 = lazy(() => import('./pages/SidebarPage01'));
+const SidebarPage2 = lazy(() => import('./pages/SidebarPage02'));
+const SidebarPage3 = lazy(() => import('./pages/SidebarPage03'));
 import ProfileForm from "./examples/forms/page";
 import AccountForm from "./examples/forms/account/page";
 import AppearanceForm from "./examples/forms/appearance/page";
@@ -46,6 +54,7 @@ const App = () => {
             <Route path="/Authentication2" element={<Authentication2/>}/>
             <Route path="/Authentication3" element={<Authentication3/>}/>
             <Route path="/Authentication4" element={<Authentication4/>}/>
+            <Route path="/Authentication5" element={<Authentication5/>}/>
             <Route path="/MailPage" element={<MailPage/>}/>
             <Route path="/BoardPage" element={<BoardPage/>}/>
             <Route path="/examples/forms" element={<FormPage/>}>
@@ -56,6 +65,13 @@ const App = () => {
               <Route path="notifications" element={<NotificationsForm/>}/>
             </Route>
             <Route path="/TasksPage" element={<TasksPage/>}/>
+            <Route path="/CardPage" element={<CardPage/>}/>
+            <Route path="/DashPage" element={<DashPage/>}/>
+            <Route path="/MusicPage" element={<MusicPage/>}/>
+            <Route path="/AllComponentsPage" element={<AllComponentsPage/>}/>
+            <Route path="/SidebarPage1" element={<SidebarPage1/>}/>
+            <Route path="/SidebarPage2" element={<SidebarPage2/>}/>
+            <Route path="/SidebarPage3" element={<SidebarPage3/>}/>
           </Routes>
         </Suspense>
       </Providers>

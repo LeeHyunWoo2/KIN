@@ -1,4 +1,3 @@
-import React from "react"
 import { Image } from '/src/renderer/scripts/CommonElements';
 
 import { cn } from "@/lib/utils"

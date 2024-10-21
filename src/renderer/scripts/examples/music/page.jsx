@@ -1,5 +1,4 @@
-import { Metadata } from "next";
-import Image from "next/image";
+import { Image, Link } from '/src/renderer/scripts/CommonElements';
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
@@ -14,7 +13,7 @@ import { Sidebar } from "./components/sidebar";
 import { listenNowAlbums, madeForYouAlbums } from "./data/albums";
 import { playlists } from "./data/playlists";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Music App",
   description: "Example music app using the components.",
 };

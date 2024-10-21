@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image, Link } from '/src/renderer/scripts/CommonElements';
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
@@ -16,12 +16,6 @@ import {
 import { Album } from "../data/albums";
 import { playlists } from "../data/playlists";
 
-interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  album: Album;
-  aspectRatio?: "portrait" | "square";
-  width?: number;
-  height?: number;
-}
 
 export function AlbumArtwork({
   album,
@@ -30,7 +24,7 @@ export function AlbumArtwork({
   height,
   className,
   ...props
-}: AlbumArtworkProps) {
+}) {
   return (
     <div className={cn("space-y-3", className)} {...props}>
       <ContextMenu>

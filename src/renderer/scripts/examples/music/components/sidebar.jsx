@@ -4,11 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { Playlist } from "../data/playlists";
 
-interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  playlists: Playlist[];
-}
-
-export function Sidebar({ className, playlists }: SidebarProps) {
+export function Sidebar({ className, playlists }) {
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">

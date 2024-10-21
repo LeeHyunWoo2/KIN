@@ -1,5 +1,4 @@
-import { Metadata } from "next";
-import Image from "next/image";
+import { Image, Link } from '/src/renderer/scripts/CommonElements';
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,15 +9,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalendarDateRangePicker } from "@/app/examples/dashboard/components/date-range-picker";
-import { MainNav } from "@/app/examples/dashboard/components/main-nav";
-import { Overview } from "@/app/examples/dashboard/components/overview";
-import { RecentSales } from "@/app/examples/dashboard/components/recent-sales";
-import { Search } from "@/app/examples/dashboard/components/search";
-import TeamSwitcher from "@/app/examples/dashboard/components/team-switcher";
-import { UserNav } from "@/app/examples/dashboard/components/user-nav";
+import { CalendarDateRangePicker } from "@/src/renderer/scripts/examples/dashboard/components/date-range-picker";
+import { MainNav } from "@/src/renderer/scripts/examples/dashboard/components/main-nav";
+import { Overview } from "@/src/renderer/scripts/examples/dashboard/components/overview";
+import { RecentSales } from "@/src/renderer/scripts/examples/dashboard/components/recent-sales";
+import { Search } from "@/src/renderer/scripts/examples/dashboard/components/search";
+import TeamSwitcher from "@/src/renderer/scripts/examples/dashboard/components/team-switcher";
+import { UserNav } from "@/src/renderer/scripts/examples/dashboard/components/user-nav";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Dashboard",
   description: "Example dashboard app built using the components.",
 };
