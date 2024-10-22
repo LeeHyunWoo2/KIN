@@ -2,7 +2,13 @@ import React, {Suspense, lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Providers from "./Providers";
 
-const Portal = lazy(() => import('./Portal'));
+
+const Portal = lazy(() =>
+    new Promise((resolve) => {
+      setTimeout(() => resolve(import('./Portal')), 1500);  // 1.5초 지연
+    })
+);
+
 const Dashboard1 = lazy(() => import('./pages/Dashboard01'));
 const Dashboard2 = lazy(() => import('./pages/Dashboard02'));
 const Dashboard3 = lazy(() => import('./pages/Dashboard03'));
@@ -32,6 +38,8 @@ import AccountForm from "./examples/forms/account/page";
 import AppearanceForm from "./examples/forms/appearance/page";
 import DisplayForm from "./examples/forms/display/page";
 import NotificationsForm from "./examples/forms/notifications/page";
+import {BarLoader} from "react-spinners";
+
 
 
 
@@ -39,7 +47,7 @@ const App = () => {
   return (
       <Providers>
         <Suspense fallback={<div style={{fontSize: 'xx-large', fontWeight: 'bolder', display: 'flex',
-          justifyContent: 'center', alignItems: 'center', height: '100vh'}}>Now Loading...</div>}>
+          justifyContent: 'center', alignItems: 'center', height: '100vh'}}><BarLoader/></div>}>
           <Routes>
             <Route path="/" element={<Portal/>}/>
             <Route path="/dashboard1" element={<Dashboard1/>}/>
