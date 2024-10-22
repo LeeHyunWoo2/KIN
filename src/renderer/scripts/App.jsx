@@ -33,6 +33,7 @@ const AllComponentsPage = lazy(() => import('./pages/AllComponents'));
 const SidebarPage1 = lazy(() => import('./pages/SidebarPage01'));
 const SidebarPage2 = lazy(() => import('./pages/SidebarPage02'));
 const SidebarPage3 = lazy(() => import('./pages/SidebarPage03'));
+const DataTable1 = lazy(() => import('./pages/DataTable01'));
 import ProfileForm from "./examples/forms/page";
 import AccountForm from "./examples/forms/account/page";
 import AppearanceForm from "./examples/forms/appearance/page";
@@ -80,6 +81,7 @@ const App = () => {
             <Route path="/SidebarPage1" element={<SidebarPage1/>}/>
             <Route path="/SidebarPage2" element={<SidebarPage2/>}/>
             <Route path="/SidebarPage3" element={<SidebarPage3/>}/>
+            <Route path="/DataTable1" element={<DataTable1/>}/>
           </Routes>
         </Suspense>
       </Providers>

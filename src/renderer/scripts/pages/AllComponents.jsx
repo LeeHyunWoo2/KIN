@@ -10,6 +10,14 @@ import {
   ExclamationTriangleIcon,
   DotsHorizontalIcon,
   CalendarIcon,
+  RocketIcon,
+  SlashIcon,
+  CaretSortIcon,
+  CheckIcon,
+  CopyIcon,
+  FontBoldIcon,
+  FontItalicIcon,
+  UnderlineIcon,
   ReloadIcon
 } from "@radix-ui/react-icons";
 import {
@@ -23,7 +31,6 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert"
-import {RocketIcon, SlashIcon, CaretSortIcon, CheckIcon, CopyIcon } from "@radix-ui/react-icons"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -164,7 +171,11 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar"
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import {
   Pagination,
   PaginationContent,
@@ -182,6 +193,32 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 import { Icons } from "@/components/icons"
+import { Slider } from "@/components/ui/slider"
+import {Switch} from "@/components/ui/switch";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import {Textarea} from "@/components/ui/textarea";
+import {ToastAction} from "@/components/ui/toast";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group"
+
+
 
 const frameworks = [
   {
@@ -250,6 +287,53 @@ const languages = [
   { label: "Korean", value: "ko" },
   { label: "Chinese", value: "zh" },
 ]
+
+const invoices = [
+  {
+    invoice: "INV001",
+    paymentStatus: "Paid",
+    totalAmount: "$250.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV002",
+    paymentStatus: "Pending",
+    totalAmount: "$150.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV003",
+    paymentStatus: "Unpaid",
+    totalAmount: "$350.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV004",
+    paymentStatus: "Paid",
+    totalAmount: "$450.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV005",
+    paymentStatus: "Paid",
+    totalAmount: "$550.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV006",
+    paymentStatus: "Pending",
+    totalAmount: "$200.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV007",
+    paymentStatus: "Unpaid",
+    totalAmount: "$300.00",
+    paymentMethod: "Credit Card",
+  },
+]
+
+
 
 
 const FormSchema1 = z.object({
@@ -1259,6 +1343,132 @@ export default function AllComponents() {
               </ResizablePanelGroup>
             </ResizablePanel>
           </ResizablePanelGroup>
+          <Slider defaultValue={[33]} max={100} step={1} />
+          <Switch id="airplane-mode" />
+          <Label htmlFor="airplane-mode">Airplane Mode</Label>
+          <Table>
+            <TableCaption>A list of your recent invoices.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Invoice</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Method</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {invoices.map((invoice) => (
+                  <TableRow key={invoice.invoice}>
+                    <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                    <TableCell>{invoice.paymentStatus}</TableCell>
+                    <TableCell>{invoice.paymentMethod}</TableCell>
+                    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                  </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={3}>Total</TableCell>
+                <TableCell className="text-right">$2,500.00</TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
+          <Tabs defaultValue="account" className="w-[400px]">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="account">Account</TabsTrigger>
+              <TabsTrigger value="password">Password</TabsTrigger>
+            </TabsList>
+            <TabsContent value="account">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Account</CardTitle>
+                  <CardDescription>
+                    Make changes to your account here. Click save when you're done.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" defaultValue="Pedro Duarte" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="username">Username</Label>
+                    <Input id="username" defaultValue="@peduarte" />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button>Save changes</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+            <TabsContent value="password">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Password</CardTitle>
+                  <CardDescription>
+                    Change your password here. After saving, you'll be logged out.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="current">Current password</Label>
+                    <Input id="current" type="password" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="new">New password</Label>
+                    <Input id="new" type="password" />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button>Save password</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+          </Tabs>
+          <Textarea placeholder="Type your message here." />
+          <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  title: "Uh oh! Something went wrong.",
+                  description: "There was a problem with your request.",
+                  action: <ToastAction altText="Try again">Try again</ToastAction>,
+                })
+              }}
+          >
+            Show Toast
+          </Button>
+          <ToggleGroup type="multiple"> {/*size="sm", "lg"*/}
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+              <FontBoldIcon className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+              <FontItalicIcon className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
+              <UnderlineIcon className="h-4 w-4" />
+            </ToggleGroupItem>
+          </ToggleGroup>
+
+          <ToggleGroup type="multiple" variant="outline">
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+              <FontBoldIcon className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+              <FontItalicIcon className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
+              <UnderlineIcon className="h-4 w-4" />
+            </ToggleGroupItem>
+          </ToggleGroup>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline">Hover</Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Add to library</p>
+              </TooltipContent>
+            </Tooltip>
 
           <div className="w-full h-16">
             &nbsp;

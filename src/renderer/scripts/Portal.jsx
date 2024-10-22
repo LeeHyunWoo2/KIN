@@ -47,11 +47,15 @@ const Portal = () => {
                   style={{marginRight: '10px'}}>
             Go to Charts 1
           </Button>
-          <Button onClick={() => goToPage('Authentication1')}>
-            Go to Authentication 1
+          <Button onClick={() => goToPage('DataTable1')}>
+            Go to DataTable1
           </Button>
         </div>
         <div style={{'marginTop': '20px'}}>
+          <Button onClick={() => goToPage('Authentication1')}
+                  style={{marginRight: '10px'}}>
+            Go to Authentication 1
+          </Button>
           <Button onClick={() => goToPage('Authentication2')}
                   style={{marginRight: '10px'}}>
             Go to Authentication2
