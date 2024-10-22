@@ -1,16 +1,4 @@
-import * as React from "react"
-
-// next.js 를 못쓰기 때문에 변경된 코드
-const Image = ({ src, alt, ...props }) => (
-    <img src={src} alt={alt} {...props} />
-);
-
-const Link = ({ href, children, ...props }) => (
-    <a href={href} {...props}>
-      {children}
-    </a>
-);
-
+import { Image, Link } from '/src/renderer/scripts/CommonElements';
 
 import {
   ChevronLeft,
@@ -88,7 +76,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function Dashboard() {
+export default function Dashboard5() {
   return (
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
