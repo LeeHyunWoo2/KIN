@@ -115,8 +115,16 @@ const Portal = () => {
                   style={{marginRight: '10px'}}>
             Go to SidebarPage2
           </Button>
-          <Button onClick={() => goToPage('SidebarPage3')}>
+          <Button onClick={() => goToPage('SidebarPage3')}
+                  style={{marginRight: '10px'}}>
             Go to SidebarPage3
+          </Button>
+          <Button onClick={() => goToPage('SidebarPage4')}
+                  style={{marginRight: '10px'}}>
+            Go to SidebarPage4
+          </Button>
+          <Button onClick={() => goToPage('Layout1')}>
+            Go to Layout1
           </Button>
         </div>
 

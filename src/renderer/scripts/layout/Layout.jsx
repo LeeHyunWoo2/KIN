@@ -72,7 +72,7 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-// This is sample data.
+
 const data = {
   user: {
     name: "shadcn",
@@ -101,7 +101,6 @@ const data = {
       title: "Playground",
       url: "#",
       icon: SquareTerminal,
-      isActive: true,
       items: [
         {
           title: "History",
@@ -461,6 +460,7 @@ export default function Page() {
               </Breadcrumb>
             </div>
           </header>
+          <Separator orientation="horizontal"/>
           <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
               <div className="aspect-video rounded-xl bg-muted/50" />

@@ -1470,7 +1470,7 @@ export default function AllComponents() {
               </TooltipContent>
             </Tooltip>
 
-          <div className="w-full h-16">
+          <div className="col-auto h-16">
             &nbsp;
           </div>
         </div>

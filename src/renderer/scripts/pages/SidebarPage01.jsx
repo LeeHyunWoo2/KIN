@@ -245,7 +245,7 @@ function AppSidebar({...props}) {
                 <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
                   <a href="#">
                     <div
-                        className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                        className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground min-w-fit">
                       <Command className="size-4"/>
                     </div>
                     <div
