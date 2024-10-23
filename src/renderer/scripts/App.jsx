@@ -5,7 +5,7 @@ import Providers from "./Providers";
 
 const Portal = lazy(() =>
     new Promise((resolve) => {
-      setTimeout(() => resolve(import('./Portal')), 1500);  // 1.5초 지연
+      setTimeout(() => resolve(import('./Portal')), 1000);  // 1초 지연
     })
 );
 

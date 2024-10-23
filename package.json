@@ -6,7 +6,6 @@
     "start": "npm run build && electron .",
     "fst": "electron .",
     "build": "webpack --mode development",
-    "fst": "electron .",
     "watch": "webpack --watch --mode development",
     "clean": "rimraf dist && rimraf out && rimraf release && rimraf node_modules/.cache"
   },
