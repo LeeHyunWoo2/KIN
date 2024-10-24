@@ -2,6 +2,10 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require("path");
 const { getTasks } = require('./handler');
+const electronReload = require('electron-reload');
+const electronLocalShortcut = require('electron-localshortcut');
+
+electronReload(path.join(__dirname, '../renderer'));
 
 // 윈도우 생성 함수
 function createWindow() {
@@ -20,8 +24,16 @@ function createWindow() {
     mainWindow.webContents.executeJavaScript(`
     window.location.hash = '/';
     `)
-    mainWindow.webContents.openDevTools()
   });
+
+  electronLocalShortcut.register(mainWindow, 'F12', () =>{
+    mainWindow.webContents.toggleDevTools()
+  });
+
+  electronLocalShortcut.register(mainWindow, 'F5', () => {
+    mainWindow.reload();
+  })
+
 }
 
 // Electron이 준비되었을 때 윈도우 생성

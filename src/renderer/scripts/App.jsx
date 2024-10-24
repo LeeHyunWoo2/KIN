@@ -1,10 +1,11 @@
 import React, {Suspense, lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Providers from "./Providers";
+import Layout1 from './layout/Layout';
 
 const Portal = lazy(() =>
     new Promise((resolve) => {
-      setTimeout(() => resolve(import('./Portal')), 1000);  // 1초 지연
+      setTimeout(() => resolve(import('./Portal')), 500);
     })
 );
 
@@ -34,7 +35,6 @@ const SidebarPage2 = lazy(() => import('./pages/SidebarPage02'));
 const SidebarPage3 = lazy(() => import('./pages/SidebarPage03'));
 const SidebarPage4 = lazy(() => import('./pages/SidebarPage04'));
 const DataTable1 = lazy(() => import('./pages/DataTable01'));
-const Layout1 = lazy(() => import('./layout/Layout'));
 
 import ProfileForm from "./examples/forms/page";
 import AccountForm from "./examples/forms/account/page";
@@ -51,6 +51,9 @@ const App = () => {
       <Providers>
         <Suspense fallback={<div style={{fontSize: 'xx-large', fontWeight: 'bolder', display: 'flex',
           justifyContent: 'center', alignItems: 'center', height: '100vh'}}><BarLoader/></div>}>
+          <div>
+            <Layout1/>
+          </div>
           <Routes>
             <Route path="/" element={<Portal/>}/>
             <Route path="/dashboard1" element={<Dashboard1/>}/>
@@ -85,7 +88,6 @@ const App = () => {
             <Route path="/SidebarPage3" element={<SidebarPage3/>}/>
             <Route path="/SidebarPage4" element={<SidebarPage4/>}/>
             <Route path="/DataTable1" element={<DataTable1/>}/>
-            <Route path="/Layout1" element={<Layout1/>}/>
           </Routes>
         </Suspense>
       </Providers>

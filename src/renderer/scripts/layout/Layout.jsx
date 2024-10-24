@@ -1,4 +1,5 @@
 import * as React from "react"
+import Layout2 from './Layout2'
 import {
   AudioWaveform,
   BadgeCheck,
@@ -52,7 +53,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
+import {Separator} from "@/components/ui/separator"
 import {
   Sidebar,
   SidebarContent,
@@ -72,6 +73,7 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import {Children} from "react";
 
 const data = {
   user: {
@@ -201,7 +203,7 @@ const data = {
   ],
 }
 
-export default function Page() {
+export default function Page({children}) {
   const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
 
   return (
@@ -216,10 +218,12 @@ export default function Page() {
                         size="lg"
                         className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                     >
-                      <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground min-w-fit">
-                        <activeTeam.logo className="size-4" />
+                      <div
+                          className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground min-w-fit">
+                        <activeTeam.logo className="size-4"/>
                       </div>
-                      <div className="grid flex-1 text-left text-sm leading-tight">
+                      <div
+                          className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
                         {activeTeam.name}
                       </span>
@@ -227,7 +231,7 @@ export default function Page() {
                         {activeTeam.plan}
                       </span>
                       </div>
-                      <ChevronsUpDown className="ml-auto" />
+                      <ChevronsUpDown className="ml-auto"/>
                     </SidebarMenuButton>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
@@ -236,7 +240,8 @@ export default function Page() {
                       side="bottom"
                       sideOffset={4}
                   >
-                    <DropdownMenuLabel className="text-xs text-muted-foreground">
+                    <DropdownMenuLabel
+                        className="text-xs text-muted-foreground">
                       Teams
                     </DropdownMenuLabel>
                     {data.teams.map((team, index) => (
@@ -245,17 +250,20 @@ export default function Page() {
                             onClick={() => setActiveTeam(team)}
                             className="gap-2 p-2"
                         >
-                          <div className="flex size-6 items-center justify-center rounded-sm border">
-                            <team.logo className="size-4 shrink-0" />
+                          <div
+                              className="flex size-6 items-center justify-center rounded-sm border">
+                            <team.logo className="size-4 shrink-0"/>
                           </div>
                           {team.name}
-                          <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
+                          <DropdownMenuShortcut>⌘{index
+                              + 1}</DropdownMenuShortcut>
                         </DropdownMenuItem>
                     ))}
-                    <DropdownMenuSeparator />
+                    <DropdownMenuSeparator/>
                     <DropdownMenuItem className="gap-2 p-2">
-                      <div className="flex size-6 items-center justify-center rounded-md border bg-background">
-                        <Plus className="size-4" />
+                      <div
+                          className="flex size-6 items-center justify-center rounded-md border bg-background">
+                        <Plus className="size-4"/>
                       </div>
                       <div className="font-medium text-muted-foreground">
                         Add team
@@ -280,9 +288,10 @@ export default function Page() {
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
                           <SidebarMenuButton tooltip={item.title}>
-                            {item.icon && <item.icon />}
+                            {item.icon && <item.icon/>}
                             <span>{item.title}</span>
-                            <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                            <ChevronRight
+                                className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"/>
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
                         <CollapsibleContent>
@@ -310,14 +319,14 @@ export default function Page() {
                     <SidebarMenuItem key={item.name}>
                       <SidebarMenuButton asChild>
                         <a href={item.url}>
-                          <item.icon />
+                          <item.icon/>
                           <span>{item.name}</span>
                         </a>
                       </SidebarMenuButton>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <SidebarMenuAction showOnHover>
-                            <MoreHorizontal />
+                            <MoreHorizontal/>
                             <span className="sr-only">More</span>
                           </SidebarMenuAction>
                         </DropdownMenuTrigger>
@@ -327,16 +336,16 @@ export default function Page() {
                             align="end"
                         >
                           <DropdownMenuItem>
-                            <Folder className="text-muted-foreground" />
+                            <Folder className="text-muted-foreground"/>
                             <span>View Project</span>
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <Forward className="text-muted-foreground" />
+                            <Forward className="text-muted-foreground"/>
                             <span>Share Project</span>
                           </DropdownMenuItem>
-                          <DropdownMenuSeparator />
+                          <DropdownMenuSeparator/>
                           <DropdownMenuItem>
-                            <Trash2 className="text-muted-foreground" />
+                            <Trash2 className="text-muted-foreground"/>
                             <span>Delete Project</span>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
@@ -345,7 +354,7 @@ export default function Page() {
                 ))}
                 <SidebarMenuItem>
                   <SidebarMenuButton className="text-sidebar-foreground/70">
-                    <MoreHorizontal className="text-sidebar-foreground/70" />
+                    <MoreHorizontal className="text-sidebar-foreground/70"/>
                     <span>More</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -366,9 +375,11 @@ export default function Page() {
                             src={data.user.avatar}
                             alt={data.user.name}
                         />
-                        <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                        <AvatarFallback
+                            className="rounded-lg">CN</AvatarFallback>
                       </Avatar>
-                      <div className="grid flex-1 text-left text-sm leading-tight">
+                      <div
+                          className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
                         {data.user.name}
                       </span>
@@ -376,17 +387,18 @@ export default function Page() {
                         {data.user.email}
                       </span>
                       </div>
-                      <ChevronsUpDown className="ml-auto size-4" />
+                      <ChevronsUpDown className="ml-auto size-4"/>
                     </SidebarMenuButton>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
                       className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-                      side="bottom"
+                      side="right"
                       align="end"
                       sideOffset={4}
                   >
                     <DropdownMenuLabel className="p-0 font-normal">
-                      <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                      <div
+                          className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                         <Avatar className="h-8 w-8 rounded-lg">
                           <AvatarImage
                               src={data.user.avatar}
@@ -396,7 +408,8 @@ export default function Page() {
                             CN
                           </AvatarFallback>
                         </Avatar>
-                        <div className="grid flex-1 text-left text-sm leading-tight">
+                        <div
+                            className="grid flex-1 text-left text-sm leading-tight">
                         <span className="truncate font-semibold">
                           {data.user.name}
                         </span>
@@ -406,31 +419,31 @@ export default function Page() {
                         </div>
                       </div>
                     </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
+                    <DropdownMenuSeparator/>
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
-                        <Sparkles />
+                        <Sparkles/>
                         Upgrade to Pro
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
+                    <DropdownMenuSeparator/>
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
-                        <BadgeCheck />
+                        <BadgeCheck/>
                         Account
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <CreditCard />
+                        <CreditCard/>
                         Billing
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <Bell />
+                        <Bell/>
                         Notifications
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
+                    <DropdownMenuSeparator/>
                     <DropdownMenuItem>
-                      <LogOut />
+                      <LogOut/>
                       Log out
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -438,37 +451,11 @@ export default function Page() {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarFooter>
-          <SidebarRail />
+          <SidebarRail/>
         </Sidebar>
         <SidebarInset>
-          <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-            <div className="flex items-center gap-2 px-4">
-              <SidebarTrigger className="-ml-1" />
-              <Separator orientation="vertical" className="mr-2 h-4" />
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="#">
-                      Building Your Application
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="hidden md:block" />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-            </div>
-          </header>
-          <Separator orientation="horizontal"/>
-          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-              <div className="aspect-video rounded-xl bg-muted/50" />
-              <div className="aspect-video rounded-xl bg-muted/50" />
-              <div className="aspect-video rounded-xl bg-muted/50" />
-            </div>
-            <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-          </div>
+          <Layout2/>
+          {children}
         </SidebarInset>
       </SidebarProvider>
   )
