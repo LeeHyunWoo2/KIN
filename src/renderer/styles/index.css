@@ -1,4 +1,10 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/renderer/styles/PretendardVariable.woff2') format('woff2');
+  font-weight: 100 900;  /* 가변 폰트의 가중치 범위를 지정 */
+  font-style: normal;
+}
+
 
 @tailwind base;
 @tailwind components;
@@ -106,6 +112,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'pretendard', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-weight: 400;
   }
 }
