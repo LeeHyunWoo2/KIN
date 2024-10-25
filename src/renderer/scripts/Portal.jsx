@@ -123,13 +123,7 @@ const Portal = () => {
                   style={{marginRight: '10px'}}>
             Go to SidebarPage4
           </Button>
-          <Button onClick={() => goToPage('Layout1')}>
-            Go to Layout1
-          </Button>
         </div>
-        <div style={{'marginTop': '20px'}}>
-        </div>
-
       </div>
   );
 };

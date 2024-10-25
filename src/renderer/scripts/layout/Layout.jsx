@@ -1,6 +1,7 @@
 import * as React from "react"
-import Layout2 from './Layout2'
 import {
+  ArrowDown,
+  ArrowUp,
   AudioWaveform,
   BadgeCheck,
   Bell,
@@ -9,11 +10,17 @@ import {
   ChevronRight,
   ChevronsUpDown,
   Command,
+  Copy,
+  CornerUpLeft,
+  CornerUpRight,
   CreditCard,
+  FileText,
   Folder,
   Forward,
   Frame,
   GalleryVerticalEnd,
+  LineChart,
+  Link,
   LogOut,
   Map,
   MoreHorizontal,
@@ -22,21 +29,17 @@ import {
   Settings2,
   Sparkles,
   SquareTerminal,
+  Star,
+  Trash,
   Trash2,
 } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import {Avatar, AvatarFallback, AvatarImage,} from "@/components/ui/avatar"
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import {
   Collapsible,
@@ -59,6 +62,7 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarInset,
@@ -73,7 +77,8 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import {Children} from "react";
+import {Button} from "@/components/ui/button"
+import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 
 const data = {
   user: {
@@ -200,6 +205,68 @@ const data = {
       url: "#",
       icon: Map,
     },
+  ],
+  actions: [
+    [
+      {
+        label: "Customize Page",
+        icon: Settings2,
+      },
+      {
+        label: "Turn into wiki",
+        icon: FileText,
+      },
+    ],
+    [
+      {
+        label: "Copy Link",
+        icon: Link,
+      },
+      {
+        label: "Duplicate",
+        icon: Copy,
+      },
+      {
+        label: "Move to",
+        icon: CornerUpRight,
+      },
+      {
+        label: "Move to Trash",
+        icon: Trash2,
+      },
+    ],
+    [
+      {
+        label: "Undo",
+        icon: CornerUpLeft,
+      },
+      {
+        label: "View analytics",
+        icon: LineChart,
+      },
+      {
+        label: "Version History",
+        icon: GalleryVerticalEnd,
+      },
+      {
+        label: "Show delete pages",
+        icon: Trash,
+      },
+      {
+        label: "Notifications",
+        icon: Bell,
+      },
+    ],
+    [
+      {
+        label: "Import",
+        icon: ArrowUp,
+      },
+      {
+        label: "Export",
+        icon: ArrowDown,
+      },
+    ],
   ],
 }
 
@@ -454,9 +521,83 @@ export default function Page({children}) {
           <SidebarRail/>
         </Sidebar>
         <SidebarInset>
-          <Layout2/>
+          <header className="fixed w-full flex h-14 border-b shrink-0 items-center gap-2 z-9999">
+            <div className="flex flex-1 items-center gap-2 px-3">
+              <SidebarTrigger/>
+              <Separator orientation="vertical" className="mr-2 h-4"/>
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbPage className="line-clamp-1">
+                      Project Management & Task Tracking
+                    </BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+            <div className="ml-auto px-3">
+              <NavActions actions={data.actions}/>
+            </div>
+          </header>
           {children}
         </SidebarInset>
       </SidebarProvider>
+  )
+}
+
+
+function NavActions({
+  actions,
+}) {
+  const [isOpen, setIsOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    setIsOpen(false)
+  }, [])
+
+  return (
+      <div className="flex items-center gap-2 text-sm">
+        <div className="hidden font-medium text-muted-foreground md:inline-block">
+          Edit Oct 08
+        </div>
+        <Button variant="ghost" size="icon" className="h-7 w-7">
+          <Star />
+        </Button>
+        <Popover open={isOpen} onOpenChange={setIsOpen}>
+          <PopoverTrigger asChild>
+            <Button
+                variant="ghost"
+                size="icon"
+                className="h-7 w-7 data-[state=open]:bg-accent"
+            >
+              <MoreHorizontal />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+              className="w-56 overflow-hidden rounded-lg p-0"
+              align="end"
+          >
+            <Sidebar collapsible="none" className="bg-transparent">
+              <SidebarContent>
+                {actions.map((group, index) => (
+                    <SidebarGroup key={index} className="border-b last:border-none">
+                      <SidebarGroupContent className="gap-0">
+                        <SidebarMenu>
+                          {group.map((item, index) => (
+                              <SidebarMenuItem key={index}>
+                                <SidebarMenuButton>
+                                  <item.icon /> <span>{item.label}</span>
+                                </SidebarMenuButton>
+                              </SidebarMenuItem>
+                          ))}
+                        </SidebarMenu>
+                      </SidebarGroupContent>
+                    </SidebarGroup>
+                ))}
+              </SidebarContent>
+            </Sidebar>
+          </PopoverContent>
+        </Popover>
+      </div>
   )
 }
